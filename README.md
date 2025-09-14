@@ -1,5 +1,5 @@
 # Prompt : [Busineess] Give me mark up to create ERD for https://mermaid.live/
-## lease in Scenario in the Books of Lessee
+##  Scenario 01- Lease in Contract in the Books of Lessor- Need to change the Code
 ```mermaid
 erDiagram
     LEASE_CONTRACT {
