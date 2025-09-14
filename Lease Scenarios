@@ -1,0 +1,46 @@
+erDiagram
+    direction LR
+    LESSEE ||--o{ SECURITY_DEPOSIT : "gives"
+    LESSOR ||--o{ SECURITY_DEPOSIT : "receives"
+    SECURITY_DEPOSIT }|..|| CLASSIFICATION : "classified as"
+    SECURITY_DEPOSIT ||--|{ ACCOUNTING_ENTRY : "records"
+    ACCOUNTING_ENTRY ||--|{ INTEREST_INCOME : "generates"
+
+    LESSEE {
+      string lessee_id PK
+      string name
+    }
+
+    LESSOR {
+      string lessor_id PK
+      string name
+    }
+
+    SECURITY_DEPOSIT {
+      string deposit_id PK
+      float amount "Deposit Amount"
+      date deposit_date
+      string terms
+    }
+
+    CLASSIFICATION {
+      string type "Financial Asset/Liability or Lease Component"
+      string standard "Ind AS 116"
+    }
+
+    ACCOUNTING_ENTRY {
+      string entry_id PK
+      string deposit_id FK
+      string entry_type "Initial Recognition / Subsequent Measurement"
+      date entry_date
+      float carrying_amount "PV of Deposit"
+      float amortized_amount
+    }
+
+    INTEREST_INCOME {
+      string interest_id PK
+      string entry_id FK
+      float interest_rate "12% per annum"
+      float interest_amount
+      date computation_date
+    }
