@@ -133,3 +133,56 @@ erDiagram
     LEASE_LIABILITY ||--o{ INTEREST_EXPENSE : "accrues"
 
 ```
+## In the Books of Lessor for Commercial lease out Scenario under indAS116
+```mermaid
+erDiagram
+    LEASE_CONTRACT {
+        int LeaseContractID PK
+        int LessorID FK
+        int LesseeID FK
+        date ContractStartDate
+        date ContractEndDate
+        int LeaseTermMonths
+        decimal MonthlyRentAmount
+        decimal TotalContractValue
+    }
+
+    RENTAL_UNIT {
+        int RentalUnitID PK
+        string UnitDescription
+        decimal Cost
+        decimal ResidualValue
+        decimal AccumulatedDepreciation
+        decimal NetBookValue
+    }
+
+    LEASE_PAYMENT {
+        int LeasePaymentID PK
+        int LeaseContractID FK
+        date PaymentDate
+        decimal PaymentAmount
+    }
+
+    RENTAL_INCOME {
+        int RentalIncomeID PK
+        int LeaseContractID FK
+        date PeriodStart
+        date PeriodEnd
+        decimal IncomeAmount
+    }
+
+    DEPRECIATION {
+        int DepreciationID PK
+        int RentalUnitID FK
+        date PeriodStart
+        date PeriodEnd
+        decimal DepreciationAmount
+    }
+
+    %% Relationships
+    LEASE_CONTRACT ||--|| RENTAL_UNIT : "relates to"
+    LEASE_CONTRACT ||--o{ LEASE_PAYMENT : "receives"
+    LEASE_CONTRACT ||--o{ RENTAL_INCOME : "generates"
+    RENTAL_UNIT ||--o{ DEPRECIATION : "is depreciated by"
+
+```
