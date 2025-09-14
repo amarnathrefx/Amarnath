@@ -1,3 +1,4 @@
+# Prompt : [Busineess] Give me mark up to create ERD for https://mermaid.live/
 ## lease in Scenario in the Books of Lessee
 ```mermaid
 erDiagram
@@ -61,4 +62,7 @@ erDiagram
     LEASE_CONTRACT ||--o{ LEASE_PAYMENT : has
     ROU_ASSET ||--o{ DEPRECIATION : has
     LEASE_LIABILITY ||--o{ INTEREST_EXPENSE : has
+```
+## In the Books of Lessee with IND AS116 Scenario 02
+``` mermaid
 ```
